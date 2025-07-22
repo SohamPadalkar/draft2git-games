@@ -36,4 +36,4 @@ jobs:
             git push
           else
             echo "Decoded level2.txt not found. Skipping commit."
-          
+          fi
