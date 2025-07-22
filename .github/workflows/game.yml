@@ -21,22 +21,19 @@ jobs:
           git config user.name "gitgames-bot"
           git config user.email "bot@gitgames.local"
 
-      - name: 🗂️ Create level2 folder
-        run: mkdir -p level2
-
-      - name: 🔓 Decode Level 2 Challenge
+      - name: 🔓 Decode Level 2 Challenge (to levels/level2.txt)
         run: |
-          base64 -d levels/level2.b64 > level2/challenge2.txt
+          base64 -d levels/level2.b64 > levels/level2.txt
 
-      - name: 🚀 Commit and push Level 2
+      - name: 🚀 Commit and push level2.txt
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -f "level2/challenge2.txt" ]; then
-            git add level2/challenge2.txt
+          if [ -f "levels/level2.txt" ]; then
+            git add levels/level2.txt
             git commit -m "Level 2 Unlocked" || echo "No changes to commit"
             git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
             git push
           else
-            echo "Level 2 file not found. Skipping commit."
+            echo "Decoded level2.txt not found. Skipping commit."
           fi
