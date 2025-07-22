@@ -21,6 +21,15 @@ jobs:
           git config user.name "gitgames-bot"
           git config user.email "bot@gitgames.local"
 
+      - name: 🕵️ Validate base64 input
+        run: |
+          if base64 -d levels/level2.b64 > /dev/null 2>&1; then
+            echo "Base64 is valid!"
+          else
+            echo "❌ Invalid base64 input in level2.b64"
+            exit 1
+          fi
+
       - name: 🔓 Decode Level 2 Challenge (to levels/level2.txt)
         run: |
           base64 -d levels/level2.b64 > levels/level2.txt
