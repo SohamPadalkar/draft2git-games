@@ -1,0 +1,10 @@
+Welcome, Agent.
+
+You've been recruited for a secret mission. Inside this repository lie encrypted messages, hidden tasks, and tests of logic, curiosity, and command-line mastery.
+
+To begin your mission:
+→ Open level1/challenge1.txt
+→ Follow the instructions carefully
+→ When you're ready, commit your proof with the message: I am ready
+
+Good luck.

@@ -1,0 +1,37 @@
+name: Unlock Next Level
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  unlock-level:
+    if: contains(github.event.head_commit.message, 'I am ready')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Git
+        run: |
+          git config user.name "gitgames-bot"
+          git config user.email "bot@gitgames.local"
+
+      - name: Create level2 folder
+        run: mkdir -p level2
+
+      - name: Decode Level 2 Challenge
+        run: base64 -d levels/level2.b64 > level2/challenge2.txt
+
+      - name: Commit and push Level 2
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add level2/challenge2.txt
+          git commit -m "Level 2 Unlocked"
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
+          git push

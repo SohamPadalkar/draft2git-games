@@ -1,0 +1,11 @@
+🧩 Level 1 — The Forgotten Password
+
+Deep inside this file, someone left an old password hint. But it's encrypted...
+
+Your task:
+1. Create a file in the root directory named `proof1.txt`
+2. Write this exact message in it:
+   "The forgotten password is found."
+3. Stage and commit it with the message: I am ready
+
+Once done, push your commit — and see what happens.
